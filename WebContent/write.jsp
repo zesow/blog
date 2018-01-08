@@ -13,7 +13,7 @@
 </head>
 <body>
 <div class="container">
-<form action = "insert.jsp" method = "post" onsubmit="return formCheck();">
+<form action = "insert.do" method = "post" onsubmit="return formCheck();">
 <div class="form-group">
 	<label for="text">제목 : </label>
 	<input type="text" name="title" class="form-control"/>
