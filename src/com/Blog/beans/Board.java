@@ -1,6 +1,6 @@
 package com.Blog.beans;
 
-public class Blog {
+public class Board {
 	private int idx;
 	private String title;
 	private String writer;

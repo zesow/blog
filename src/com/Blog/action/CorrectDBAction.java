@@ -4,7 +4,10 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.regex.*;
 import javax.servlet.http.HttpServletResponse;
 
+import com.Blog.beans.Board;
 import com.Blog.controller.CommandAction;
+import com.Blog.dao.BoardDao;
+
 import java.sql.*;
 public class CorrectDBAction implements CommandAction {
 
@@ -26,28 +29,14 @@ public class CorrectDBAction implements CommandAction {
 		 
 		if(content == "" ||content == null) System.out.println("content가 null입니다.");
 		
-		Connection conn = null;
 		
-		try{
-				
-			String url = "jdbc:mysql://localhost:3306/Blog";        // 사용하려는 데이터베이스명을 포함한 URL 기술
-			String id = "root";                                                    // 사용자 계정
-			String pw = "200101";                                               // 사용자 계정의 패스워드
-			Class.forName("com.mysql.jdbc.Driver");                       // 데이터베이스와 연동하기 위해 DriverManager에 등록한다.
-
-			conn=DriverManager.getConnection(url,id,pw);              // DriverManager 객체로부터 Connection 객체를 얻어온다.
-
-			System.out.println("제대로 연결되었습니다.");                            // 커넥션이 제대로 연결되면 수행된다.
-			
-			Statement stmt = conn.createStatement();
-			String sql = "UPDATE Blog SET title='" + title + "' , writer='" + writer + "' , content='" + content + "' WHERE idx=" + idx;
-			
-			stmt.executeUpdate(sql);
-			
-			conn.close();
-			}catch(Exception e){                                                    // 예외가 발생하면 예외 상황을 처리한다.
-				e.printStackTrace();
-			}
+		Board article = new Board();
+		
+		article.setIdx(Integer.parseInt(idx));
+		article.setTitle(title);
+		article.setWriter(writer);
+		article.setContent(content);
+		BoardDao.getInstance().correctArticle(article);
 		
 		return "content.do?idx=" + idx;
 	}

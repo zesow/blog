@@ -15,25 +15,25 @@
 <div class="container">
 <div class="col-md-12">
 	<div class="page-header">
-		<h3>${title }</h3>	
+		<h3>${article.title }</h3>	
 	</div>
 </div>
 
 <div class="panel panel-default">
 <div class="panel-heading">
 	<h4 class="panel-title">
-		글번호: ${idx} &nbsp; 글쓴이: ${writer} &nbsp; 등록일: ${regdate} &nbsp; 조회수: ${count }
+		글번호: ${article.idx} &nbsp; 글쓴이: ${article.writer} &nbsp; 등록일: ${article.regdate} &nbsp; 조회수: ${article.count }
 	</h4>
 </div>
 <div class="panel-body">
 	<div class="content post" style="line-height:30px;" >
-	${content }
+	${article.content }
 	</div>
 </div>
 </div>
 
-<a href = "delete.do?idx=${idx}" class="btn btn-default">삭제  </a>
-<a href = "correct.do?idx=${idx}" class="btn btn-default">수정 </a>
+<a href = "delete.do?idx=${article.idx}" class="btn btn-default">삭제  </a>
+<a href = "correct.do?idx=${article.idx}" class="btn btn-default">수정 </a>
 <a href = "list.do" class="btn btn-default">목록 </a>
 </div>
 </body>
