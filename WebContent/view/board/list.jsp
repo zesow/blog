@@ -6,13 +6,13 @@
 <head>
 	<meta charset="UTF-8">
 	<title>문상 블로그 </title>
-	<%@ include file="head.jsp" %>
+	<%@ include file="../partial/head.jsp" %>
 </head>
 <body>
-
+<%@ include file="../partial/navbar.jsp" %>
 <div class="container">
 
-	<h1>테이블 </h1>
+	<h1>게시판 </h1>
 	<table class = "table table-striped table-hover">
 		<thead>
 		<tr>

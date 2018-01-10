@@ -7,11 +7,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<%@ include file="head.jsp" %>
+<%@ include file="../partial/head.jsp" %>
 <title>Insert title here</title>
 </head>
 <body>
-
+<%@ include file="../partial/navbar.jsp" %>
 <div class="container">
 <div class="col-md-12">
 	<div class="page-header">

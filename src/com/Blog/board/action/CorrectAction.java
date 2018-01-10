@@ -1,4 +1,4 @@
-package com.Blog.action;
+package com.Blog.board.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,7 +17,7 @@ public class CorrectAction implements CommandAction {
 		Board article = BoardDao.getInstance().getArticle(idx);
 		
 		request.setAttribute("article", article);
-		return "correct.jsp";
+		return "view/board/correct.jsp";
 	}
 
 }

@@ -4,11 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
 </head>
 <body>
-<script>
-	location.href="list.do";
-</script>
+<div class="comments">
+	<form class="addComment">
+		<textarea class="cvRequired" type="text" name="comment[body]"></textarea>
+		<button type="submit">등록</button>
+	</form>
+</div>
 </body>
 </html>

@@ -1,25 +1,25 @@
-package com.Blog.action;
+package com.Blog.board.action;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.regex.*;
 import javax.servlet.http.HttpServletResponse;
 
 import com.Blog.beans.Board;
 import com.Blog.controller.CommandAction;
 import com.Blog.dao.BoardDao;
 
-import java.util.regex.Pattern;
 import java.sql.*;
-public class InsertAction implements CommandAction {
+public class CorrectDBAction implements CommandAction {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
+		String idx = request.getParameter("idx");
 		String title = request.getParameter("title");
 		String writer = request.getParameter("writer");
 		String content = request.getParameter("content");
-
 		if(title == "" ||title == null) System.out.println("title이 null입니다.");
 		 
 		if(writer == "" ||writer == null)
@@ -29,13 +29,16 @@ public class InsertAction implements CommandAction {
 		 
 		if(content == "" ||content == null) System.out.println("content가 null입니다.");
 		
+		
 		Board article = new Board();
+		
+		article.setIdx(Integer.parseInt(idx));
 		article.setTitle(title);
 		article.setWriter(writer);
 		article.setContent(content);
-		BoardDao.getInstance().setArticle(article);
+		BoardDao.getInstance().correctArticle(article);
 		
-		return "list.do";
+		return "content.do?idx=" + idx;
 	}
 
 }

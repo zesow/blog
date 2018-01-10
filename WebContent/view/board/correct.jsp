@@ -1,31 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="java.util.*" %>
-<%
-	request.setCharacterEncoding("UTF-8");
-	response.setContentType("text/html; charset=UTF-8");
-%>
+<%@ page import = "java.sql.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>글 작성 </title>
-  	<%@ include file="head.jsp" %>
+	<title>글 수정 </title>
+  	<%@ include file="../partial/head.jsp" %>
 </head>
 <body>
+<%@ include file="../partial/navbar.jsp" %>
 <div class="container">
-<form action = "insert.do" method = "post" onsubmit="return formCheck();">
+<h1>글수정 </h1>
+<form action = "correctDB.do?idx=${article.idx}" method = "post" onsubmit="return formCheck();">
 <div class="form-group">
 	<label for="text">제목 : </label>
-	<input type="text" name="title" class="form-control"/>
+	<input type="text" name="title" class="form-control" value="${article.title}"/>
 </div>
 <div class="form-group">
 	<label for="text">작성자  : </label>
-	<input type="text" name="writer" class="form-control"/>
+	<input type="text" name="writer" class="form-control" value="${article.writer}"/>
 </div>
 
 <div class="form-group">
 	<label for="text">내용   : </label>
-	<textarea rows="10" name="content" class="form-control"></textarea>
+	<textarea rows="10" name="content" class="form-control" >${article.content}</textarea>
 </div>	
 <button type="submit" class="btn btn-default">submit</button>
 </form>
