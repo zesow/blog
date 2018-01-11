@@ -61,24 +61,29 @@ public class ControllerAction extends HttpServlet{
 		try {
 //			URI가 요청하는 객체 찾기.
 			String command = req.getRequestURI();
+			System.out.println(command.indexOf(req.getContextPath()));
 			if(command.indexOf(req.getContextPath()) == 0) {
+//				contextpath 다음부터 되돌려줌. /Blog/list.do -> /list.do
 				command = command.substring(req.getContextPath().length());
 			}
+			
+
 			com = (CommandAction) commandMap.get(command);
 			if(com == null) {
 				System.out.println("not found : " + command);
 				return;
 			}
-			
+			//com 자체는 조상이지만 오버라이딩을 통해서 자손의 requestPro가 실행된다. = 주소 반환.
+//		request에 각 action에서 이것저것 실어서 보내준다.
 			view = com.requestPro(req, resp);
+			
 			if(view == null)
 				return;
 		} catch (Throwable e) {
 			throw new ServletException(e);
 		}
-		System.out.println(view);
-		RequestDispatcher dispatcher = req.getRequestDispatcher(view);
-		dispatcher.forward(req, resp);
+		
+		HttpUtil.forward(req, resp, view);
 	}
 
 }

@@ -5,12 +5,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.Blog.controller.CommandAction;
 
-public class LoginAction implements CommandAction{
+public class SignupViewAction implements CommandAction{
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		// TODO Auto-generated method stub
-		return "view/user/login.jsp";
+		return "view/user/signup.jsp";
 	}
 
 }
