@@ -22,7 +22,7 @@
 <div class="panel panel-default">
 <div class="panel-heading">
 	<h4 class="panel-title">
-		글번호: ${article.idx} &nbsp; 글쓴이: ${article.writer} &nbsp; 등록일: ${article.regdate} &nbsp; 조회수: ${article.count }
+		글쓴이: ${article.writer} &nbsp; 등록일: ${article.regdate} &nbsp; 조회수: ${article.count }
 	</h4>
 </div>
 <div class="panel-body">

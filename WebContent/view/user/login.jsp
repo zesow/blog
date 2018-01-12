@@ -11,20 +11,20 @@
 	<%@ include file="../partial/navbar.jsp" %>
   <div class="container home home-login">
 
-   <form class="login-form form-horizontal" action="/login" method="post">
+   <form class="login-form form-horizontal" action="login.do" method="post">
     <div class="contentBox">
      <h3 class="contentBoxTop">Login</h3>
      <fieldset>
       <div class="form-group ">
        <label for="username" class="col-sm-3 control-label">Username</label>
        <div class="col-sm-9">
-        <input class="form-control" type="text" id="username" name="username" value="">
+        <input class="form-control" type="text" id="username" name="id" value="">
        </div>
       </div>
       <div class="form-group">
        <label for="password" class="col-sm-3 control-label">Password</label>
        <div class="col-sm-9">
-        <input class="form-control" type="password" id="password" name="password" value="">
+        <input class="form-control" type="password" id="password" name="passwd" value="">
          <span class="help-block"></span>
        </div>
       </div>

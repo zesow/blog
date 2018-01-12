@@ -16,7 +16,6 @@
 	<table class = "table table-striped table-hover">
 		<thead>
 		<tr>
-			<th>번호 </th>
 			<th>제목 </th>
 			<th>작성자 </th>
 			<th>날짜 </th>
@@ -27,7 +26,6 @@
 		
 			<c:forEach items="${articleList}" var="article">
 				<tr>
-					<td>${article.idx}</td>
 					<td><a href='content.do?idx=${article.idx}'>${article.title}</a></td>
 					<td>${article.writer}</td>
 					<td>${article.regdate}</td>

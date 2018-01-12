@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -44,8 +45,14 @@
     </li>
    </ul>
    <ul class="nav navbar-nav navbar-right">
+   <%System.out.println(session.getAttribute("id")); %>
+   <%if(session.getAttribute("id") == null) {%>
       <li><a href="signupView.do"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="login.do"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a href="loginView.do"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+   <%}else{%>
+      <li><a href="correctView.do"><span class="glyphicon glyphicon-eye-open"></span> My Account</a></li>
+      <li><a href="logout.do"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+   <%} %>
    </ul>
   </div>
   
