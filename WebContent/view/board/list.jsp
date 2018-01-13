@@ -11,8 +11,25 @@
 <body>
 <%@ include file="../partial/navbar.jsp" %>
 <div class="container">
-
-	<h1>게시판 </h1>
+	<c:if test="${boardno == 1}">
+	<h1>프로젝트 </h1>
+	</c:if>
+	<c:if test="${boardno == 2}">
+	<h1>알고리즘 </h1>
+	</c:if>
+	<c:if test="${boardno == 3}">
+	<h1>경제상식 </h1>
+	</c:if>
+	<c:if test="${boardno == 4}">
+	<h1>민법 </h1>
+	</c:if>
+	<c:if test="${boardno == 5}">
+	<h1>사진 </h1>
+	</c:if>
+	<c:if test="${boardno == 6}">
+	<h1>맛집 </h1>
+	</c:if>
+	
 	<table class = "table table-striped table-hover">
 		<thead>
 		<tr>
@@ -45,7 +62,7 @@
 			<li><a href="#">5</a></li>
 		</ul>
 	</div>
-	<a href = "write.do" class="btn btn-default">글쓰기 </a>
+	<a href = "write.do?boardno=${boardno}" class="btn btn-default">글쓰기 </a>
 </div>
 </body>
 </html>

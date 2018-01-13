@@ -3,6 +3,9 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	response.setContentType("text/html; charset=UTF-8");
+	String boardno = request.getParameter("boardno");
+	System.out.println("write.jsp : " + boardno);
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -15,7 +18,7 @@
 <%@ include file="../partial/navbar.jsp" %>
 <div class="container">
 <h1>글쓰기 </h1>
-<form action = "insert.do" method = "post" onsubmit="return formCheck();">
+<form action = "insert.do?boardno=${boardno}" method = "post" onsubmit="return formCheck();">
 <div class="form-group">
 	<label for="text">제목 : </label>
 	<input type="text" name="title" class="form-control"/>
@@ -28,7 +31,7 @@
 <div class="form-group">
 	<label for="text">내용   : </label>
 	<textarea rows="10" name="content" class="form-control"></textarea>
-</div>	
+</div>
 <button type="submit" class="btn btn-default">submit</button>
 </form>
 </div>

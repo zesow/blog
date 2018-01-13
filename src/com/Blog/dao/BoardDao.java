@@ -17,11 +17,11 @@ public class BoardDao extends CommonDao{
 		return _instance;
 	}
 	
-	public ArrayList<Board> getArticleList() throws SQLException{
+	public ArrayList<Board> getArticleList(int boardno) throws SQLException{
 		ArrayList<Board> articleList = new ArrayList<Board>();
 		ResultSet rs = null;
-		String sql = "SELECT * FROM board ORDER BY idx DESC";
-		
+		String sql = "SELECT * FROM board WHERE boardno="+boardno + " ORDER BY idx DESC";
+		System.out.println(boardno);
 		rs = openConnection().executeQuery(sql);
 		
 		while(rs.next()) {
@@ -65,8 +65,8 @@ public class BoardDao extends CommonDao{
 	
 	public void setArticle(Board article) throws SQLException{
                      
-			String sql = "INSERT INTO board" + " (TITLE,WRITER,REGDATE,COUNT,CONTENT)" +
-						" VALUES ('" + article.getTitle() + "', '" + article.getWriter() + "', " + "NOW()" + ", '" + 1 + "', '" + article.getContent() + "')";
+			String sql = "INSERT INTO board" + " (TITLE,WRITER,REGDATE,COUNT,CONTENT,boardno)" +
+						" VALUES ('" + article.getTitle() + "', '" + article.getWriter() + "', " + "NOW()" + ", '" + 1 + "', '" + article.getContent() +"', '" + article.getBoardno() + "')";
 	
 			
 			openConnection().executeUpdate(sql);

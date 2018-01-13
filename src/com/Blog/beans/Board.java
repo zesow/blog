@@ -7,6 +7,7 @@ public class Board {
 	private String regdate;
 	private int count;
 	private String content;
+	private String boardno;
 	public int getIdx() {
 		return idx;
 	}
@@ -42,5 +43,11 @@ public class Board {
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public String getBoardno() {
+		return boardno;
+	}
+	public void setBoardno(String boardno) {
+		this.boardno = boardno;
 	}
 }

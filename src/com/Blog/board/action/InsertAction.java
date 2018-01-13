@@ -19,7 +19,8 @@ public class InsertAction implements CommandAction {
 		String title = request.getParameter("title");
 		String writer = request.getParameter("writer");
 		String content = request.getParameter("content");
-
+		String boardno = request.getParameter("boardno");
+		System.out.println("boardno :" + boardno);
 		if(title == "" ||title == null) System.out.println("title이 null입니다.");
 		 
 		if(writer == "" ||writer == null)
@@ -33,6 +34,7 @@ public class InsertAction implements CommandAction {
 		article.setTitle(title);
 		article.setWriter(writer);
 		article.setContent(content);
+		article.setBoardno(boardno);
 		BoardDao.getInstance().setArticle(article);
 		
 		return "list.do";

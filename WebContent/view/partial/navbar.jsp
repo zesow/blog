@@ -25,27 +25,27 @@
     <li class="dropdown">
     		<a class="dropdown-toggle" data-toggle="dropdown" href="/about">Coding<span class="caret"></span></a>
     		<ul class="dropdown-menu">
-    			<li><a href="#">Projects</a></li>
-    			<li><a href="#">Algorithm</a></li>
+    			<li><a href="projectsList.do">Projects</a></li>
+    			<li><a href="algorithmList.do">Algorithm</a></li>
     		</ul>
     </li>
     <li class="dropdown">
     		<a class="dropdown-toggle" data-toggle="dropdown" href="/about">Finance & law<span class="caret"></span></a>
     		<ul class="dropdown-menu">
-    			<li><a href="#">경제상식 </a></li>
-    			<li><a href="#">세금 이야기 </a></li>
+    			<li><a href="financeList.do">경제상식 </a></li>
+    			<li><a href="taxList.do">세금 이야기 </a></li>
     		</ul>
     </li>
     <li class="dropdown">
     		<a class="dropdown-toggle" data-toggle="dropdown" href="/about">Life<span class="caret"></span></a>
     		<ul class="dropdown-menu">
-    			<li><a href="#">사진 </a></li>
-    			<li><a href="#">맛집 </a></li>
+    			<li><a href="photoList.do">사진 </a></li>
+    			<li><a href="foodList.do">맛집 </a></li>
     		</ul>
     </li>
    </ul>
    <ul class="nav navbar-nav navbar-right">
-   <%System.out.println(session.getAttribute("id")); %>
+  
    <%if(session.getAttribute("id") == null) {%>
       <li><a href="signupView.do"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
       <li><a href="loginView.do"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>

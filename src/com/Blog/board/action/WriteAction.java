@@ -10,6 +10,8 @@ public class WriteAction implements CommandAction {
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		// TODO Auto-generated method stub
+		String boardno = request.getParameter("boardno");
+		request.setAttribute("boardno", boardno);
 		return "view/board/write.jsp";
 	}
 
