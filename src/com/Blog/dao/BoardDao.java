@@ -13,76 +13,40 @@ public class BoardDao extends CommonDao{
 	
 	public static BoardDao getInstance() {
 		BoardDao _instance = new BoardDao();
-		
+		_instance.SetDB();
 		return _instance;
 	}
 	
 	public ArrayList<Board> getArticleList(int boardno) throws SQLException{
-		ArrayList<Board> articleList = new ArrayList<Board>();
-		ResultSet rs = null;
-		String sql = "SELECT * FROM board WHERE boardno="+boardno + " ORDER BY idx DESC";
-		System.out.println(boardno);
-		rs = openConnection().executeQuery(sql);
-		
-		while(rs.next()) {
-			Board article = new Board();
-			
-			article.setIdx(rs.getInt("idx"));
-			article.setTitle(rs.getString("title"));
-			article.setWriter(rs.getString("writer"));
-			article.setRegdate(rs.getString("regdate"));
-			article.setCount(rs.getInt("count"));
-			
-			articleList.add(article);
-		}
-		
-		closeConnection();
+		  
+		@SuppressWarnings("unchecked")  		 
+		ArrayList<Board> articleList = null;
+		articleList = (ArrayList<Board>)GetDB().queryForList("getArticleList", boardno); 
 		return articleList;
+
 	}
-	
+
 	public Board getArticle(String idx) throws SQLException{
-		Board article = new Board();
-		ResultSet rs = null;
-		
-		String sql = "SELECT * FROM board WHERE idx=" + idx ;
-		rs = openConnection().executeQuery(sql);
-		while(rs.next()) {
-			
-			article.setIdx(rs.getInt("idx"));
-			article.setTitle(rs.getString("title"));
-			article.setWriter(rs.getString("writer"));
-			article.setRegdate(rs.getString("regdate"));
-			article.setCount(rs.getInt("count"));
-			article.setContent(rs.getString("content"));
-			
-		}
-		
-		closeConnection();
-		
+
+		@SuppressWarnings("unchecked")
+		Board article = null;
+		article = (Board)GetDB().queryForObject("getArticle", idx);
 		return article;
-		
 	}
 	
 	public void setArticle(Board article) throws SQLException{
                      
-			String sql = "INSERT INTO board" + " (TITLE,WRITER,REGDATE,COUNT,CONTENT,boardno)" +
-						" VALUES ('" + article.getTitle() + "', '" + article.getWriter() + "', " + "NOW()" + ", '" + 1 + "', '" + article.getContent() +"', '" + article.getBoardno() + "')";
-	
-			
-			openConnection().executeUpdate(sql);
-			closeConnection();
+		GetDB().insert("setArticle", article);
 	}
 	
 	public void deleteArticle(String idx) throws SQLException{
 		
-		String sql = "DELETE FROM board WHERE idx=" + idx ;
-		openConnection().executeUpdate(sql);
+		GetDB().delete("deleteArticle", idx);
 	}
 	
 	public void correctArticle(Board article) throws SQLException{
-		String sql = "UPDATE board SET title='" + article.getTitle() + "' , writer='" + article.getWriter() + "' , content='" + article.getContent() + "' WHERE idx=" + article.getIdx();
 
-		openConnection().executeUpdate(sql);
-		closeConnection();
+		GetDB().update("correctArticle", article);
 	}
+	
 }
