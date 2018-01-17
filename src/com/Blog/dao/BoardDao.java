@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.Blog.beans.Board;
 
@@ -17,11 +18,21 @@ public class BoardDao extends CommonDao{
 		return _instance;
 	}
 	
-	public ArrayList<Board> getArticleList(int boardno) throws SQLException{
+	public ArrayList<Board> getArticleList(int boardno,int offset, int maxPost) throws SQLException{
 		  
 		@SuppressWarnings("unchecked")  		 
 		ArrayList<Board> articleList = null;
-		articleList = (ArrayList<Board>)GetDB().queryForList("getArticleList", boardno); 
+		System.out.println("boardno :" + boardno);
+		System.out.println("offset :" + offset);
+		System.out.println("maxPost :" + maxPost);
+		
+		// ibatis에 파라미터 여러개 보내기 위해선 map으로 감싸서 보내야 함.
+		HashMap<String,Object> params = new HashMap<>();
+		params.put("boardno", boardno);
+		params.put("offset", offset);
+		params.put("maxPost", maxPost);
+		
+		articleList = (ArrayList<Board>)GetDB().queryForList("getArticleList", params); 
 		return articleList;
 
 	}
@@ -47,6 +58,12 @@ public class BoardDao extends CommonDao{
 	public void correctArticle(Board article) throws SQLException{
 
 		GetDB().update("correctArticle", article);
+	}
+
+	public int getCount(int boardno) throws SQLException {
+		// TODO Auto-generated method stub
+		int count = (int)GetDB().queryForObject("getCount",boardno);
+		return count;
 	}
 	
 }

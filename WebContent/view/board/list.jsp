@@ -50,19 +50,57 @@
 				</tr>
 			</c:forEach>
 
-		
 		</tbody>
 	</table>
-	<div class="text-center">
-		<ul class="pagination">
-			<li><a href="#">1</a></li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">4</a></li>
-			<li><a href="#">5</a></li>
-		</ul>
-	</div>
+	
+	<!-- 페이지 처리  -->
+	<!-- 글이 있을 경우 작동. -->
+	<!-- 현재 페이지 is grater than 5 일 경우 '이전 ' 버튼 생성  -->
+	<!-- 이번 페이지 그룹의 시작 페이지와 끝 페이지 만큼 버튼 생성. -->
+	<!-- 현재 페이지가 선택한 페이지일 경우 파란색 버튼 생성. -->
+	<!-- 아닐 경우 그냥 버튼 생성. -->
+	<!-- 다음 페이지 그룹이 있을 경우 '다음' 버튼 생성. -->
+	<c:choose>
+		<c:when test="${paging.numOfRecords ne Null and paging.numOfRecords ne '' and paging.numOfRecords ne 0 }">
+			<div class="text-center marg-top">
+				<ul class="pagination">
+					
+					<c:if test="${paging.currentPageNo gt 5 }">
+						<li><a href="javascript:goPage(${paging.prevPageNo},${paging.maxPost })">이전</a></li>
+					</c:if>
+					
+					<c:forEach var="i" begin="${paging.startPageNo }" end="${paging.endPageNo }" step="1">
+						<c:choose>
+							
+							<c:when test="${i eq paging.currentPageNo }">
+								<li class="active"><a href="javascript:goPage(${i },${paging.maxPost })">${i }</a></li>
+							</c:when>
+							
+							<c:otherwise>
+								<li><a href="javascript:goPage(${i },${paging.maxPost })">${i }</a></li>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					
+					
+					<fmt:parseNumber var="currentPage" integerOnly="true" value="${(paging.currentPageNo-1) / 5 }" />
+					<fmt:parseNumber var="finalPage" integerOnly="true" value="${(paging.finalPageNo-1) / 5 }" />
+					 <c:if test="${currentPage < finalPage }">
+						<li><a href="javascript:goPage(${paging.nextPageNo },${paging.maxPost })">다음</a></li>
+					</c:if>
+				</ul>
+			</div>
+		</c:when>
+	</c:choose>
+	
 	<a href = "write.do?boardno=${boardno}" class="btn btn-default">글쓰기 </a>
 </div>
 </body>
 </html>
+
+<!-- 다음 페이지로 가는 함수. -->
+<script>
+	function goPage(pages,lines){
+		location.href='?' + "pages=" + pages;
+	}
+</script>

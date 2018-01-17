@@ -6,11 +6,16 @@
 	<typeAlias alias="int" type="java.lang.Integer" />
 	<typeAlias alias="board" type="com.Blog.beans.Board" />
 	
-	<select id="getArticleList" resultClass="board" parameterClass="int">
+	<select id="getArticleList" resultClass="board" parameterClass="java.util.HashMap">
 		SELECT *
 		FROM board 
 		WHERE boardno = #boardno#
 		ORDER BY idx DESC
+		LIMIT #offset#,#maxPost#
+	</select>
+	
+	<select id="getCount" resultClass="int" parameterClass="int">
+		SELECT count(*) FROM board WHERE boardno = #boardno#
 	</select>
 	
 	<select id="getArticle" resultClass="board" parameterClass="str">
