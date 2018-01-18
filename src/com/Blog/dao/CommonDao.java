@@ -1,7 +1,5 @@
 package com.Blog.dao;
 
-import java.sql.*;
-
 import com.Blog.db.sqlconfig.IBatisDBConnector;
 import com.ibatis.sqlmap.client.SqlMapClient;
 

@@ -4,9 +4,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>거스의 블로그에 오신 것을 환영합니다.</title>
+<%@ include file="../view/partial/head.jsp" %>
 </head>
 <body>
-	<script>location.href = "list.do";</script>
+<%@ include file="../view/partial/navbar.jsp" %>
+	<div class="slider">
+    <div class="slide-viewer">
+        <div class="slide-group">
+            <div class="slide slide-1">
+                <img src="./img/index/I1.jpg">
+            </div>
+            <div class="slide slide-2">
+                <img src="./img/index/iron2.jpg">
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

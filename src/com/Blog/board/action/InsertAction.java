@@ -8,7 +8,6 @@ import com.Blog.controller.CommandAction;
 import com.Blog.dao.BoardDao;
 
 import java.util.regex.Pattern;
-import java.sql.*;
 public class InsertAction implements CommandAction {
 
 	@Override
@@ -20,7 +19,7 @@ public class InsertAction implements CommandAction {
 		String writer = request.getParameter("writer");
 		String content = request.getParameter("content");
 		String boardno = request.getParameter("boardno");
-		System.out.println("boardno :" + boardno);
+		
 		if(title == "" ||title == null) System.out.println("title이 null입니다.");
 		 
 		if(writer == "" ||writer == null)
@@ -37,7 +36,22 @@ public class InsertAction implements CommandAction {
 		article.setBoardno(boardno);
 		BoardDao.getInstance().setArticle(article);
 		
-		return "list.do";
+		String returnBoard = null;
+		if(boardno.equals("1"))
+			returnBoard = "projectsList.do";
+		else if(boardno.equals("2"))
+			returnBoard = "algorithmList.do";
+		else if(boardno.equals("3"))
+			returnBoard = "financeList.do";
+		else if(boardno.equals("4"))
+			returnBoard = "taxList.do";
+		else if(boardno.equals("5"))
+			returnBoard = "photoList.do";
+		else
+			returnBoard = "foodList.do";
+		
+		return returnBoard;
+		
 	}
 
 }

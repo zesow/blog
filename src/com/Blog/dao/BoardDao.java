@@ -1,10 +1,6 @@
 package com.Blog.dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -22,9 +18,7 @@ public class BoardDao extends CommonDao{
 		  
 		@SuppressWarnings("unchecked")  		 
 		ArrayList<Board> articleList = null;
-		System.out.println("boardno :" + boardno);
-		System.out.println("offset :" + offset);
-		System.out.println("maxPost :" + maxPost);
+
 		
 		// ibatis에 파라미터 여러개 보내기 위해선 map으로 감싸서 보내야 함.
 		HashMap<String,Object> params = new HashMap<>();

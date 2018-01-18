@@ -93,7 +93,9 @@
 		</c:when>
 	</c:choose>
 	
-	<a href = "write.do?boardno=${boardno}" class="btn btn-default">글쓰기 </a>
+	<c:if test="${not empty sessionScope.id}">
+		<a href = "write.do?boardno=${boardno}" class="btn btn-default">글쓰기 </a>
+	</c:if>
 </div>
 </body>
 </html>

@@ -25,7 +25,7 @@
 </div>
 <div class="form-group">
 	<label for="text">작성자  : </label>
-	<input type="text" name="writer" class="form-control"/>
+	<input type="text" name="writer" class="form-control" value="${sessionScope.id }" readonly/>
 </div>
 
 <div class="form-group">
@@ -46,18 +46,7 @@
 	        alert('제목을 입력하세요');                                   // 경고창을 띄우고
 	        document.forms[0].title.focus();                           // 해당태그에 포커스를 준뒤
 	        return false;                                                     // false를 리턴합니다.
-	    }
-	 
-	    if (writer == null ||  writer  == ""){          
-	        alert('작성자를 입력하세요'); 
-	        document.forms[0].writer.focus();                      
-	        return false;               
-	    }else if(writer.match(/^(\w+)@(\w+)[.](\w+)$/ig) == null){
-	        alert('이메일 형식으로 입력하세요'); 
-	        document.forms[0].writer.focus();                      
-	        return false; 
-	    }
-	
+	    }	 
 	}
 </script>
 </body>

@@ -16,7 +16,7 @@
     <span class="icon-bar"></span>
    </button>
    <div class="navbar-header">
-   <a class="navbar-brand" href="/">Gus' Blog</a>
+   <a class="navbar-brand" href="index.jsp">Gus' Blog</a>
    </div>
   </div>
   <div class="collapse navbar-collapse" id="myNavbar">
@@ -46,13 +46,17 @@
    </ul>
    <ul class="nav navbar-nav navbar-right">
   
-   <%if(session.getAttribute("id") == null) {%>
+  <c:choose>
+   <c:when test="${empty sessionScope.id}">
       <li><a href="signupView.do"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
       <li><a href="loginView.do"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-   <%}else{%>
+    </c:when>
+   	<c:otherwise>
       <li><a href="correctView.do"><span class="glyphicon glyphicon-eye-open"></span> My Account</a></li>
       <li><a href="logout.do"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-   <%} %>
+   	</c:otherwise>
+   </c:choose>
+   
    </ul>
   </div>
   
