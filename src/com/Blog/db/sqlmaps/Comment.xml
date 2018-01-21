@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"  "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Comment">
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias="comment" type="com.Blog.beans.Comment" />
+	
+	<select id="getCommentList" resultClass="comment" parameterClass="int">
+		SELECT *
+		FROM comment 
+		WHERE comment_board = #comment_board#
+	</select>
+	
+	<insert id="setComment" parameterClass="comment">
+		INSERT INTO comment (comment_board,comment_id,comment_date,comment_parent,comment_content)
+	VALUES (#comment_board#,#comment_id#,NOW(),#comment_parent#,#comment_content#);
+	</insert>
+	
+	<delete id="deleteComment" parameterClass="int">
+		DELETE FROM comment WHERE comment_num= #comment_num#
+	</delete>
+	
+</sqlMap>

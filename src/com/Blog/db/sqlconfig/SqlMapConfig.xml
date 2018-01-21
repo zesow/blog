@@ -32,4 +32,5 @@
     
     <sqlMap resource="com/Blog/db/sqlmaps/Board.xml" />
 	<sqlMap resource="com/Blog/db/sqlmaps/User.xml" />
+	<sqlMap resource="com/Blog/db/sqlmaps/Comment.xml"/>
 </sqlMapConfig>
