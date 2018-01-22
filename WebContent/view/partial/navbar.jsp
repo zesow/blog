@@ -48,12 +48,12 @@
   
   <c:choose>
    <c:when test="${empty sessionScope.id}">
-      <li><a href="signupView.do"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="loginView.do"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a href="signupView.do?boardno=${boardno }"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="loginView.do?boardno=${boardno }"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
     </c:when>
    	<c:otherwise>
-      <li><a href="correctView.do"><span class="glyphicon glyphicon-eye-open"></span> My Account</a></li>
-      <li><a href="logout.do"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      <li><a href="correctView.do?boardno=${boardno }"><span class="glyphicon glyphicon-eye-open"></span> My Account</a></li>
+      <li><a href="logout.do?boardno=${boardno }"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
    	</c:otherwise>
    </c:choose>
    

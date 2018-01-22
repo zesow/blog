@@ -49,8 +49,8 @@
 						<div class="pull-right">
 							<a href="#">답변</a>
 							<c:if test="${comment.comment_id == sessionScope.id }">
-								<a href="commentUpdateAction.do">수정</a>
-								<a href="commentDeleteAction.do?comment_num=${comment.comment_num }">삭제</a>
+								<!-- <a href="commentUpdateAction.do">수정</a> -->
+								<a href="#" onclick="deleteCmt(${comment.comment_num })">삭제</a>
 							</c:if>
 						</div>
 						</c:if>
@@ -87,7 +87,7 @@
 	<a href = "delete.do?idx=${article.idx}" class="btn btn-default">삭제  </a>
 	<a href = "correct.do?idx=${article.idx}" class="btn btn-default">수정 </a>
 </c:if>
-<a href = "list.do" class="btn btn-default">목록 </a>
+<a href = "javascript:history.back();" class="btn btn-default">목록 </a>
 </div>
 </body>
 </html>
@@ -149,4 +149,18 @@
 			document.location.reload();
 		}
 	}
+	
+	function deleteCmt(comment_num){
+		var param = "comment_num=" + comment_num;
+		// 1단계. http request 만들기.
+		httpRequest = getXMLHttpRequest();
+		// 서버로 보낸 요청에 대한 응답을 받았을 때 어떤 동작을 할 것인지.
+		httpRequest.onreadystatechange =checkFunc;
+		// 실질적으로 서버에 request 함.
+		httpRequest.open("POST","commentDeleteAction.do",true);
+		httpRequest.setRequestHeader('Content-Type','application/x-www-form-urlencoded;charset=UTF-8');
+		httpRequest.send(param);
+	
+	}
+		
 </script>

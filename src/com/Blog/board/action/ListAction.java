@@ -60,7 +60,7 @@ public class ListAction implements CommandAction{
 		request.setAttribute("articleList",articleList);
 		request.setAttribute("boardno", boardno);
 		request.setAttribute("paging", paging);
-			
+	
 		return "view/board/list.jsp";
 	}
 	

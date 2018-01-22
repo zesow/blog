@@ -15,7 +15,25 @@ public class LogoutAction implements CommandAction{
 		session = request.getSession();
 		session.invalidate();
 		
-		return "list.do";
+		int boardno = Integer.parseInt(request.getParameter("boardno"));
+		String uri = null;
+		
+		if(boardno == 0)
+			uri = "list.do";
+		else if(boardno == 1)
+			uri = "projectsList.do";
+		else if(boardno == 2)
+			uri = "algorithmList.do";
+		else if(boardno == 3)
+			uri = "financeList.do";
+		else if(boardno == 4)
+			uri = "taxList.do";
+		else if(boardno == 5)
+			uri = "photoList.do";
+		else if(boardno == 6)
+			uri = "foodList.do";
+		
+		return "index.jsp";
 	}
 
 }

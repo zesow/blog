@@ -8,10 +8,11 @@
 <%@ include file="../partial/head.jsp" %>
 </head>
 <body>
-	<%@ include file="../partial/navbar.jsp" %>
+<%@ include file="../partial/navbar.jsp" %>
   <div class="container home home-login">
 
    <form class="login-form form-horizontal" action="login.do" method="post">
+   	<input type=hidden name="boardno" value=${param.boardno }>
     <div class="contentBox">
      <h3 class="contentBoxTop">Login</h3>
      <fieldset>

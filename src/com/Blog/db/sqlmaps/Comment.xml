@@ -10,6 +10,7 @@
 		SELECT *
 		FROM comment 
 		WHERE comment_board = #comment_board#
+		ORDER BY comment_num DESC;
 	</select>
 	
 	<insert id="setComment" parameterClass="comment">

@@ -12,7 +12,7 @@
 <%@ include file="../partial/head.jsp" %>
 </head>
 <body>
-	<%@ include file="../partial/navbar.jsp" %>
+<%@ include file="../partial/navbar.jsp" %>
   <div class="container user user-new">
 
    <form class="user-form form-horizontal" action="signup.do" method="post">
